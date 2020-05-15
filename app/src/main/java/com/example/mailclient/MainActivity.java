@@ -91,50 +91,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    class MailSender extends AsyncTask {
-        @Override
-        protected Object doInBackground(Object[] objects) {
-            //checkMailIMAP(LOGIN, PASS);
-            MailReader reader = new MailReader(MailReader.MailType.YANDEX, LOGIN, PASS);
-            reader.getLetters(0);
-            reader.closeConnection();
-            return null;
-        }
-    }
-    public synchronized void sendMail(String subject, String body, String sender, String recipients, String filename) {
-        try {
-            Properties properties = new Properties();
-            //Хост или IP-адрес почтового сервера
-            properties.put("mail.smtp.host", "smtp.yandex.ru");
-            //Требуется ли аутентификация для отправки сообщения
-            properties.put("mail.smtp.auth", "true");
-            //Порт для установки соединения
-            properties.put("mail.smtp.socketFactory.port", "465");
-            //Фабрика сокетов, так как при отправке сообщения Yandex требует SSL-соединения
-            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            Session session = Session.getDefaultInstance(properties,
-                    //Аутентификатор - объект, который передает логин и пароль
-                    new Authenticator() {
-                        @Override
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(LOGIN, PASS);
-                        }
-                    });
 
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(sender));
-            message.setSubject(subject);
-            if (recipients.indexOf(',') > 0)
-                message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse(recipients));
-            else
-                message.setRecipient(Message.RecipientType.TO,
-                        new InternetAddress(recipients));
-            message.setText(body);
-            Transport.send(message);
-        } catch (Exception e) {
-            Log.e("Mail",e.toString());
-        }
-    }
 
 }

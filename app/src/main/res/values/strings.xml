@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mail Client</string>
+    <string name="pref_text_mail">\n\n--\nSent from mobile application Mail Client</string>
 </resources>

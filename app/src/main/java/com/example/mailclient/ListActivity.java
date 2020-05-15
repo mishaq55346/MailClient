@@ -93,6 +93,14 @@ public class ListActivity extends AppCompatActivity {
         ConnectionClose close = new ConnectionClose();
         close.execute();
     }
+
+    public void clickFAB(View view) {
+        Intent intent = new Intent(ListActivity.this, SendMail.class);
+        intent.putExtra("LOGIN", LOGIN);
+        intent.putExtra("PASS", PASS);
+        startActivity(intent);
+    }
+
     class ConnectionClose extends AsyncTask {
 
         @Override

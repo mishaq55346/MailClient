@@ -131,13 +131,13 @@ public class MailReader {
                             String fileName = MimeUtility.decodeText(part.getFileName());
                             // Получаем InputStream
                             InputStream is = part.getInputStream();
-                            Log.d(TAG, "file name: " + fileName);
-                            Log.d(TAG, "input stream: " + is.toString());
+                            //Log.d(TAG, "file name: " + fileName);
+                            //Log.d(TAG, "input stream: " + is.toString());
                             letter.text += " file " + fileName + ";";
                             // Далее можем записать файл, или что-угодно от нас требуется
                         }
                         else{
-                            Log.d(TAG, "not recognized attach: " + mes.getContentType());
+                            //Log.d(TAG, "not recognized attach: " + mes.getContentType());
                         }
                     }
                 }

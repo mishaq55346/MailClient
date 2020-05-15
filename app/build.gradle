@@ -33,4 +33,5 @@ dependencies {
     implementation 'commons-codec:commons-codec:1.14'
     implementation files('libs/javax.mail.jar')
     implementation files('libs/jsoup-1.13.1.jar')
+    implementation 'com.android.support:design:28.0.0'
 }
