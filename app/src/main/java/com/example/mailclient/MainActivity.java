@@ -1,32 +1,21 @@
 package com.example.mailclient;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.Properties;
+import androidx.appcompat.app.AppCompatActivity;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     final String TAG = "Mail";
     static ArrayList<Letter> letters;
-    String LOGIN = "misha.kolmykovqq1@yandex.ru";
-    String PASS = "mishaq1";
+    String LOGIN = "";
+    String PASS = "";
     EditText edit_login;
     EditText edit_password;
     static MailReader reader;
@@ -89,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 
 }

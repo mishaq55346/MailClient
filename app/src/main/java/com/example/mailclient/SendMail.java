@@ -41,6 +41,7 @@ public class SendMail extends AppCompatActivity {
         MailSender sender = new MailSender();
         sender.execute();
     }
+
     class MailSender extends AsyncTask{
         String subj;
         String body;
@@ -67,7 +68,6 @@ public class SendMail extends AppCompatActivity {
         public synchronized void sendMail(String subject, String body, String sender, String recipients, String filename) {
             try {
                 Properties properties = new Properties();
-                //Хост или IP-адрес почтового сервера
                 if (sender.contains("@yandex.ru") || sender.contains("@ya.ru")){
                     properties.put("mail.smtp.host", "smtp.yandex.ru");
                 }
@@ -77,14 +77,10 @@ public class SendMail extends AppCompatActivity {
                 else if (sender.contains("@gmail.com")){
                     properties.put("mail.smtp.host", "smtp.gmail.com");
                 }
-                //Требуется ли аутентификация для отправки сообщения
                 properties.put("mail.smtp.auth", "true");
-                //Порт для установки соединения
                 properties.put("mail.smtp.socketFactory.port", "465");
-                //Фабрика сокетов, так как при отправке сообщения Yandex требует SSL-соединения
                 properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
                 Session session = Session.getInstance(properties,
-                        //Аутентификатор - объект, который передает логин и пароль
                         new Authenticator() {
                             @Override
                             protected PasswordAuthentication getPasswordAuthentication() {

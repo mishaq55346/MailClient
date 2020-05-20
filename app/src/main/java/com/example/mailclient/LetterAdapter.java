@@ -15,16 +15,9 @@ public class LetterAdapter extends RecyclerView.Adapter {
     private List<Letter> letters;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    void FillNum(int i){
-        //letters.get(i).full_num = nf.format(letters.get(i).num);
-    }
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public LetterAdapter(ArrayList letters) {
         //Log.d("Mail", "received " + letters.size() + " letters in adapter create");
         this.letters = letters;
-        for (int i = 0; i < letters.size(); i++) {
-            FillNum(i);
-        }
     }
 
     @Override
@@ -36,16 +29,9 @@ public class LetterAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        //if (position % 2 == 0)
-        //    holder.itemView.setBackgroundColor(Color.WHITE);
-        //else
-        //    holder.itemView.setBackgroundColor(Color.GRAY);
-
         ((LetterItem)(holder)).sender.setText(letters.get(position).sender);
         ((LetterItem)(holder)).subject.setText(letters.get(position).subject);
         ((LetterItem)(holder)).text.setText(letters.get(position).text);
-
-
     }
 
     @Override

@@ -2,8 +2,6 @@ package com.example.mailclient;
 
 import androidx.annotation.NonNull;
 
-import javax.sql.StatementEvent;
-
 public class Letter {
     String sender;
     String text;
